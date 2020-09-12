@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-    <title>bookwiz // Search over 1,000,000 books</title>
+    <title>bookwiz // Search terms...</title>
 </head>
 
 <body>
@@ -16,12 +16,17 @@
         <header class="header">
             <img src="img/logo.png" alt="Logo" class="header__logo">
             <form class="search">
-                <input type="text" class="search__field" placeholder="Search over 1,000,000 books...">
+                <select class="options">
+                    <option value="1">Search by keyword </option>
+                    <option value="2">Search by author </option>
+                    <option value="3">Search by title </option>
+                    <option value="3">Search by ISBN </option>
+                </select>
+                <input type="text" class="search__field" placeholder="Search terms...">
                 <button class="btn search__btn">
                     <svg class="search__icon">
                         <use href="img/icons.svg#icon-magnifying-glass"></use>
                     </svg>
-                    <span>Search</span>
                 </button>
             </form>
             <div class="likes">

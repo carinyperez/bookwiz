@@ -1,4 +1,6 @@
 import Search from './models/Search';
+import * as searchView from './views/searchView';
+import { elements } from './views/base';
 
 /** Global state of the app
  * - Search object 
@@ -11,25 +13,47 @@ import Search from './models/Search';
 const state = {}; 
 
 const controlSearch = async () => {
+
+    //set search parameters 
+    const params = searchView.getParams(); 
     // 1) get query from view 
-    const query = 'Goosebumps' // TODO 
+    const query = searchView.getInput();
+    console.log(query); 
 
-    if (query) {
-        // 2) New search object and add it to state 
-        state.search = new Search(query);
+        if(query) {
 
-        // 3) Prepare UI for results 
+            if (params == 1) {
+                state.search = new Search(query,'subject');
+            } 
 
-        // 4) Search for books 
-        await state.search.getResults(); 
+            if (params == 2) {
+                state.search = new Search(query,'inauthor');
+            } 
+            if (params == 3) {
+                state.search = new Search(query,'intitle');
+            } 
+            if (params == 4) {
+                state.search = new Search(query,'isbn');
+            } 
+            
+            
+            // 3) Prepare UI for results 
+            searchView.clearInput();
+            searchView.clearResults(); 
 
-        // 5) render results on UI 
-        console.log(state.search.result);
+            // 4) Search for books 
+            await state.search.getResults(); 
+
+            // 5) render results on UI 
+            // console.log(state.search.result);
+            searchView.renderResults(state.search.result);
+
     }
 }
 
+
 // the default is to reload 
-document.querySelector('.search').addEventListener('submit', e => {
+elements.searchForm.addEventListener('submit', e => {
     e.preventDefault();
     controlSearch();
 });
