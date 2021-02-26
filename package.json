@@ -1,7 +1,7 @@
 {
   "name": "starter",
   "version": "1.0.0",
-  "description": "workoutdeck project ",
+  "description": "Search for electronic books",
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development",
